@@ -4,13 +4,16 @@ mongoose.Promise = global.Promise;
 
 const descriptionSchema = new mongoose.Schema({
   id: Number,
-  name: String,
-  bedrooms: String,
+  Owner: String,
+  houseName: String,
+  description: String,
+  bedrooms: Number,
   beds: Number,
-  baths: String,
+  guests: Number,
+  baths: Number,
   amenities: String
 });
 
-const Descrtion = mongoose.model('Description', descriptionSchema);
+const Description = mongoose.model('Description', descriptionSchema);
 
 module.exports = Description;
