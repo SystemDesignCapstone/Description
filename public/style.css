@@ -1,0 +1,98 @@
+#description {
+  margin:auto;
+  width: 600px;
+}
+
+#descriptionBox {
+  float: left;
+  width: 10px;
+
+}
+
+#owner {
+  float: right;
+  width: 10px;
+}
+
+.sizeHeader {
+  color:#441a05;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.name {
+  color:#3f444c;
+  font-weight: bold;
+  font-size:34px;
+}
+.ownerIcon {
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+}
+.ownerName {
+  color:#585c60;
+  font-size: 14px;
+}
+.city {
+  color:#585c60;
+  font-size:20px;
+  margin-bottom: 12px
+}
+
+.size {
+  color:#3f444c;
+  font-weight: bold;
+  font-size:18px;
+}
+
+.lockHead {
+  color:#3f444c;
+  font-weight: bold;
+  font-size:18px;
+}
+
+.lockOption {
+  color:#585c60;
+  font-size:16px;
+}
+
+.house {
+  color:#585c60;
+  font-size:16px;
+}
+.description {
+  color:#585c60;
+  font-size:16px;
+  border-top: 1px;
+  border-bottom: 0px;
+  border-left: 0px;
+  border-right:0px;
+  border-style: solid;
+  border-color: #e5e5e5;
+  margin-top: 14px;
+  margin: 10px;
+
+}
+
+.contact {
+  font-size: 18px;
+  color:#277c99;
+  font-weight: bold;
+  border-bottom: 1px;
+  border-top:0px;
+  border-left: 0px;
+  border-right:0px;
+  border-style: solid;
+  border-color: #e5e5e5;
+}
+
+.amenitiesHead {
+  color:#3f444c;
+  font-weight: bold;
+  font-size:18px;
+}
+.bullets {
+  color:#585c60;
+  font-size:16px;
+}
