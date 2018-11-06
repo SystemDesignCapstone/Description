@@ -14,8 +14,9 @@ const descriptionSchema = new mongoose.Schema({
   guests: Number,
   baths: Number,
   amenities: String,
-  city: String
-
+  city: String,
+  lock: String,
+  rate: Number
 });
 
 const Description = mongoose.model('Description', descriptionSchema);
