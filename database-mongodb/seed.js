@@ -19,7 +19,7 @@ for (var i = 1; i <= 100; i++) {
     sampleData.amenities = amenitiesArr[Math.floor(Math.random() * amenitiesArr.length)]
     sampleData.full = optionsArr[Math.floor(Math.random() * optionsArr.length)];
     sampleData.lock = checkIn[Math.floor(Math.random() * checkIn.length)];
-    sampleData.lock = percent[Math.floor(Math.random() * checkIn.length)];
+    sampleData.rate = percent[Math.floor(Math.random() * checkIn.length)];
     //sampleData.city = faker.address.city();
 
 

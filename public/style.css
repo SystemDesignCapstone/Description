@@ -46,6 +46,17 @@
   font-size:18px;
 }
 
+.lockHead {
+  color:#3f444c;
+  font-weight: bold;
+  font-size:18px;
+}
+
+.lockOption {
+  color:#585c60;
+  font-size:16px;
+}
+
 .house {
   color:#585c60;
   font-size:16px;
