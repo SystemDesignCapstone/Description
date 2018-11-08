@@ -12,13 +12,17 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '..', '/public')));
 
 app.get('/description', (req, res) => {
-  Description
-  .findOne({})
+  Description.count().exec(function(err, count) {
+    var random = Math.floor(Math.random() * count)
+
+  Description.findOne({})
+  .skip(random)
   .exec(function (err, description) {
       if (err) {
         console.log('Error')
       }
       res.status(200).send(JSON.stringify(description))
+   })
   });
 });
 
