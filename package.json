@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "seedDb": "node database-mongodb/seed.js",
+    "seedDb": "node database/seed.js",
     "test": "jest",
     "dev:react": "webpack -d --watch",
     "build": "webpack -p"

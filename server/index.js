@@ -2,7 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const cors = require('cors');
-const Description = require('../database-mongodb/description.js');
+const Description = require('../database/description.js');
 
 const app = express();
 const PORT = process.env.PORT || 8081;
