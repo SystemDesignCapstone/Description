@@ -9,7 +9,11 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "seedDb": "node database/seed.js",
+    "seedPost": "node --max_old_space_size=5000  database/seedPost.js",
+    "seedCass": "node database/seedCass.js",
+    "db:init": "psql -d 'sdcdb' -f 'database/description.sql' -U postgres",
+    "db:setup": "node database/seedPost.js",
+    "db:clean": "psql -d 'sdcdb' -c 'DROP TABLE ajd;' -U postgres",
     "test": "jest",
     "dev:react": "webpack -d --watch",
     "build": "webpack -p"
@@ -24,8 +28,12 @@
     "jquery": "^3.3.1",
     "mongoose": "^5.3.6",
     "nodemon": "^1.18.4",
+    "pg": "^7.6.1",
+    "pg-copy-streams": "^1.2.0",
+    "pg-query-stream": "^1.1.2",
     "react": "^16.6.0",
-    "react-dom": "^16.6.0"
+    "react-dom": "^16.6.0",
+    "stream": "0.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",

@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const db = require('./index.js');
-mongoose.Promise = global.Promise;
 
-const descriptionSchema = new mongoose.Schema({
+const db = require('./index.js');
+
+
+const sdcdb =
+  `CREATE TABLE IF NOT EXISTS ajd(
   id: Number,
   imageUrl: String,
   Owner: String,
@@ -17,8 +18,10 @@ const descriptionSchema = new mongoose.Schema({
   city: String,
   lock: String,
   rate: Number
-});
+  )`;
 
-const Description = mongoose.model('Description', descriptionSchema);
+//const Description = mongoose.model('Description', descriptionSchema);
 
 module.exports = Description;
+
+
