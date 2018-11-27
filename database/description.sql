@@ -1,5 +1,5 @@
   CREATE TABLE IF NOT EXISTS ajd(
-  id INT UNIQUE,
+  id INT PRIMARY KEY,
   imageUrl VARCHAR,
   Owner VARCHAR,
   houseName VARCHAR,

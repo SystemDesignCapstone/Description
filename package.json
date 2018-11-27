@@ -9,10 +9,10 @@
   },
   "scripts": {
     "start": "node server/index.js",
-    "seedPost": "node --max_old_space_size=5000  database/seedPost.js",
+    "seedPost": "node database/seedPost.js | psql -d sdcdb -U postgres -c '\\copy ajd FROM STDIN'",
     "seedCass": "node database/seedCass.js",
     "db:init": "psql -d 'sdcdb' -f 'database/description.sql' -U postgres",
-    "db:setup": "node database/seedPost.js",
+    "db:setup": "node database/seedPostTest.js",
     "db:clean": "psql -d 'sdcdb' -c 'DROP TABLE ajd;' -U postgres",
     "test": "jest",
     "dev:react": "webpack -d --watch",
