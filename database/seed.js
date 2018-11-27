@@ -1,34 +1,59 @@
-const db  = require('./index.js');
-const Description = require('./description.js');
-const faker = require('faker');
 
-for (var i = 1; i <= 100; i++) {
-  let amenitiesArr = ["Pool", "Spa", "Laundry", "Parking", "Heating", "Wifi"] //why is heating an amenity?
-  let checkIn = ["keypad", "lockbox", "smartlock"]
-  let optionsArr = ["Entire house", "Entire apartment", "Entire Townhouse"]
-  let percent = [90,91,92,93,94,95,96,97,98];
-  let beds = Math.floor(Math.random() * 10) + 1;
-  let sampleData = {};
-    sampleData.imageUrl = faker.image.avatar();
-    sampleData.Owner = faker.name.findName();
-    sampleData.houseName = faker.lorem.sentence();
-    sampleData.description = faker.lorem.paragraph();
+const faker = require('faker');
+const fs = require('fs');
+const fastcsv = require('fast-csv');
+
+
+var seed = () => {
+
+  var results  = [];
+  for (var i = 5000001; i <= 10000000; i++) {
+    //let amenitiesArr = ["Pool", "Spa", "Laundry", "Parking", "Heating", "Wifi"]
+    //let checkIn = ["keypad", "lockbox", "smartlock"]
+    let optionsArr = ["Entire house", "Entire apartment", "Entire Townhouse"]
+    //let percent = [90,91,92,93,94,95,96,97,98];
+    let beds = Math.floor(Math.random() * 10) + 1;
+    let sampleData = {};
+    sampleData.id = i;
+    sampleData.amenities =  "Pool"; //amenitiesArr[Math.floor(Math.random() * amenitiesArr.length)]
+    sampleData.baths = Math.floor(Math.random() * beds) + 1;
     sampleData.bedrooms = Math.floor(Math.random() * 5) + 1;
     sampleData.beds = beds;
+    sampleData.description = faker.lorem.sentence();
     sampleData.guests = beds * 2; //w
-    sampleData.baths = Math.floor(Math.random() * beds) + 1;
-    sampleData.amenities = amenitiesArr[Math.floor(Math.random() * amenitiesArr.length)]
-    sampleData.full = optionsArr[Math.floor(Math.random() * optionsArr.length)];
-    sampleData.lock = checkIn[Math.floor(Math.random() * checkIn.length)];
-    sampleData.rate = percent[Math.floor(Math.random() * checkIn.length)];
-    //sampleData.city = faker.address.city();
+    sampleData.houseName = faker.lorem.word();
+    sampleData.imageurl = faker.image.avatar();
+    sampleData.lock = "no";
+    sampleData.owner = faker.name.findName();
+    sampleData.rate = 80;
+    sampleData.type = optionsArr[Math.floor(Math.random() * optionsArr.length)];
 
 
-    Description.create(sampleData, (err, result) => {
-      if (err) {
-        console.log('Error seeding database')
-      }
-    })
-  };
+    results.push(sampleData);
+    }
+    return results;
+}
+
+var data = seed();
+//console.log(data);
+const sdcSeed = () => {
+  console.time();
+  const csvStream = fastcsv.createWriteStream({headers: false}),
+    writableStream = fs.createWriteStream("seed2.csv");
+
+  writableStream.on("finish", () => {
+    console.log('CSV DONE!');
+  });
+
+  csvStream.pipe(writableStream);
+
+  for (let i = 0; i < 5000000; i++) {
+    csvStream.write(data[i]);
+  }
+
+  csvStream.end();
+  console.timeEnd();
+};
 
 
+sdcSeed();

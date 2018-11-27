@@ -10,7 +10,8 @@
   "scripts": {
     "start": "node server/index.js",
     "seedPost": "node database/seedPost.js | psql -d sdcdb -U postgres -c '\\copy ajd FROM STDIN'",
-    "seedCass": "node database/seedCass.js",
+    "seedCass": "node --max_old_space_size=8192 database/seed.js",
+    "db:cass": "node database/seedCass.js",
     "db:init": "psql -d 'sdcdb' -f 'database/description.sql' -U postgres",
     "db:setup": "node database/seedPostTest.js",
     "db:clean": "psql -d 'sdcdb' -c 'DROP TABLE ajd;' -U postgres",
@@ -21,6 +22,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "body-parser": "^1.18.3",
+    "cassandra": "^0.1.0",
     "chai": "^4.2.0",
     "cors": "^2.8.5",
     "express": "^4.16.4",
@@ -40,15 +42,17 @@
     "@babel/preset-env": "^7.1.0",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.4",
+    "cassandra-driver": "^3.5.0",
+    "css-loader": "^1.0.1",
     "eslint": "^5.8.0",
     "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
+    "fast-csv": "^2.4.1",
     "jest": "^23.6.0",
+    "style-loader": "^0.23.1",
     "webpack": "^4.23.1",
-    "webpack-cli": "^3.1.2",
-    "css-loader": "^1.0.1",
-    "style-loader": "^0.23.1"
+    "webpack-cli": "^3.1.2"
   }
 }
