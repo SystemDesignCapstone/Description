@@ -1,6 +1,6 @@
-const mongoose = require('mongoose');
-const mongoUri = 'mongodb+srv://jessicahasal:Taylor10!@cluster0-ym3od.mongodb.net/description?retryWrites=true';
+const connection = 'postgresql://postgres:@localhost:5432/sdcdb';
+const db = new Client(connection);
 
-const db = mongoose.connect(mongoUri)
+db.connect();
 
 module.exports = db

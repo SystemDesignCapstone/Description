@@ -12,10 +12,17 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch("http://airjld.us-east-2.elasticbeanstalk.com/description")
+    //let id = Number(window.location.pathname.replace(/\//, ''));
+
+    let id = Math.floor(Math.random() * 10000000);
+
+
+    fetch(`http://localhost:3000/data/${id}`)
       .then(res => res.json())
       .then(
         (result) => {
+          console.log(result);
+
           this.setState({
             isLoaded: true,
             description: result
@@ -48,4 +55,4 @@ class App extends React.Component {
 }
 
 
-window.Description = App;
+ReactDom.render(<App />, document.getElementById('description'));

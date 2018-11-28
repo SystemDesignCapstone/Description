@@ -9,6 +9,7 @@
   },
   "scripts": {
     "start": "node server/index.js",
+    "k6test": "node k6.js",
     "seedPost": "node database/seedPost.js | psql -d sdcdb -U postgres -c '\\copy ajd FROM STDIN'",
     "seedCass": "node --max_old_space_size=8192 database/seed.js",
     "db:cass": "node database/seedCass.js",
@@ -21,6 +22,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "bluebird": "^3.5.3",
     "body-parser": "^1.18.3",
     "cassandra": "^0.1.0",
     "chai": "^4.2.0",
@@ -29,9 +31,11 @@
     "faker": "^4.1.0",
     "jquery": "^3.3.1",
     "mongoose": "^5.3.6",
+    "newrelic": "^4.11.0",
     "nodemon": "^1.18.4",
     "pg": "^7.6.1",
     "pg-copy-streams": "^1.2.0",
+    "pg-promise": "^8.5.2",
     "pg-query-stream": "^1.1.2",
     "react": "^16.6.0",
     "react-dom": "^16.6.0",

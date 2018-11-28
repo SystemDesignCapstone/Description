@@ -71,6 +71,7 @@ const bulkInsert = (size) => {
     rs.pipe(stream);
   //});
 }
+
 for(let i = 0; i <= 10000000; i += 100000){
-bulkInsert(i);
+  bulkInsert(i);
 }

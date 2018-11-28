@@ -20,7 +20,7 @@ let percent = [90,91,92,93,94,95,96,97,98];
 
 //const stream = db.query(copyFrom('COPY ajd FROM STDIN'))
 const inStream = new Readable({
-  read() {
+  _read() {
     if (x <= 10000) {
       var imageUrl = faker.image.avatar();
       var Owner = faker.name.findName();

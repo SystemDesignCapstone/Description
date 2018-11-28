@@ -1,4 +1,3 @@
-require('newrelic');
 const { Pool, Client } = require('pg');
 const express = require('express');
 const bodyParser = require('body-parser');
@@ -7,12 +6,12 @@ const cors = require('cors');
 //const Description = require('../database/description.js');
 
 const app = express();
-const PORT =  3000;
-
+const PORT = process.env.PORT || 3010;
+//const PORT = 8080;
 const connection = 'postgresql://postgres:@localhost:5432/sdcdb';
 const Description  = new Client(connection);
-
-Description.connect();
+console.log(PORT);
+Description .connect();
 
 
 app.use(bodyParser.json());
@@ -20,21 +19,19 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(cors());
 app.use(express.static(path.join(__dirname, '..', '/public')));
 
-app.get('/:id', function (req, res) {
-  res.sendFile(path.join(__dirname + '/../public/index.html'));
-});
+app.get('/description', (req, res) => {
+  Description.count().exec(function(err, count) {
+    var random = Math.floor(Math.random() * count)
 
-app.get('/data/:id', (req, res) => {
-  //let id = Math.floor(Math.random() * 10000000);
-  let id = req.params.id;
-  Description.query(`SELECT * from ajd WHERE id= ${id}`, (err, description) => {
+  Description.findOne({})
+  .skip(random)
+  .exec(function (err, description) {
       if (err) {
-        console.log('Error');
-        res.status(504).send("Error")
-      } else{
-        res.send(JSON.stringify(description.rows[0]))
+        console.log('Error')
       }
+      res.status(200).send(JSON.stringify(description))
    })
+  });
 });
 
 // app.post('/', (req, res) => {
